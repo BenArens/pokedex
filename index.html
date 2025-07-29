@@ -1,52 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+    <script src="./scripts/templates.js"></script>
 </head>
-<body>
+
+<body onload="fetchData()" >
     <div class="main-content">
-        <div class="preview-pokemon">
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png" alt="">
-            <span class="pokemon-number">#0001</span>
-            <span class="pokemon-name">Bulbasaur</span>
-            <div class="pokemon-types">
-                <span class="type grass">Grass</span>
-                <span class="type poison">Poison</span>
-            </div>
-        </div>
-
-         <div class="preview-pokemon">
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png" alt="">
-            <span class="pokemon-number">#0001</span>
-            <span class="pokemon-name">Bulbasaur</span>
-            <div class="pokemon-types">
-                <span class="type grass">Grass</span>
-                <span class="type poison">Poison</span>
-            </div>
-        </div>
-
-         <div class="preview-pokemon">
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png" alt="">
-            <span class="pokemon-number">#0001</span>
-            <span class="pokemon-name">Bulbasaur</span>
-            <div class="pokemon-types">
-                <span class="type grass">Grass</span>
-                <span class="type poison">Poison</span>
-            </div>
-        </div>
-
-         <div class="preview-pokemon">
-            <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png" alt="">
-            <span class="pokemon-number">#0001</span>
-            <span class="pokemon-name">Bulbasaur</span>
-            <div class="pokemon-types">
-                <span class="type grass">Grass</span>
-                <span class="type poison">Poison</span>
-            </div>
+        <div id="pokemon" class="pokemons" >
+            
         </div>
     </div>
 </body>
+
 </html>

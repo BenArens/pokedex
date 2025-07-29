@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+
+
 body{
     font-family: "Lato", sans-serif;
 }
@@ -17,6 +19,13 @@ body{
     justify-content: center;
 }
 
+.pokemons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
 .preview-pokemon{
     display: flex;
     flex-direction: column;
@@ -24,7 +33,7 @@ body{
 }
 
 .preview-pokemon img{
-    width: 170px;
+    width: 200px;
     height: auto;
     background-color: #f0f0f0;
     border-radius: 12px;
@@ -65,3 +74,4 @@ body{
     background-color: #B97FC9;
     color: white;
 }
+
