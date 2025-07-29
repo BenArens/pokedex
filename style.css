@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,11 +8,11 @@
 
 
 
-body{
+body {
     font-family: "Lato", sans-serif;
 }
 
-.main-content{
+.main-content {
     margin: 50px;
     display: flex;
     gap: 10px;
@@ -26,52 +27,89 @@ body{
     justify-content: center;
 }
 
-.preview-pokemon{
+.preview-pokemon {
     display: flex;
     flex-direction: column;
     cursor: pointer;
 }
 
-.preview-pokemon img{
+.preview-pokemon img {
     width: 200px;
     height: auto;
     background-color: #f0f0f0;
     border-radius: 12px;
 }
 
-.pokemon-number{
+.pokemon-number {
     color: grey;
     font-size: 14px;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.pokemon-types{
+.pokemon-types {
     display: flex;
     flex-direction: row;
     gap: 5px;
     font-size: 12px;
     margin-bottom: 15px;
+    align-items: center;
 }
-.pokemon-name{
+
+.pokemon-name {
     font-size: 20px;
 }
 
-.type{
+.type {
     margin-top: 5px;
-    text-align: center;
-    padding: 2px 10px;
+    display: flex;
+    justify-content: center;
+    padding: 5px 14px;
     background-color: grey;
     border-radius: 3px;
-    width: 70px;
+    width: 80px;
+    align-items: center;
 }
 
-.grass{
+.grass {
     background-color: #9BCC50;
 }
 
-.poison{
+.poison {
     background-color: #B97FC9;
     color: white;
 }
 
+.fire {
+    background-color: #FD7D24;
+    color: white;
+}
+
+.flying {
+    background: #BDB9B8;
+    background: linear-gradient(0deg, rgba(189, 185, 184, 1) 50%, rgba(61, 199, 239, 1) 50%);
+    ;
+}
+
+.water {
+    background-color: #4592C4;
+    color: white;
+}
+
+.bug {
+    background-color: #729F3F;
+    color: white;
+}
+
+.normal {
+    background-color: #A4ACAF;
+}
+
+.electric {
+    background-color: #EED535;
+}
+
+.ground {
+    background: #AB9842;
+    background: linear-gradient(0deg, rgba(171, 152, 66, 1) 50%, rgba(238, 213, 53, 1) 50%);
+}

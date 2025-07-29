@@ -9,9 +9,8 @@ function getPokemonTemplate(index) {
         </div>`
 }
 
-function getPokemonTypes(index) {
+function getPokemonTypes(index, i) {
     return `
-      <span class="type grass">${pokemons[index].types[0].type.name}</span>
-      <span class="type poison">${pokemons[index].types[0].type.name}</span>
+      <span class="type">${pokemons[index].types[i].type.name}</span>
     `
 }
