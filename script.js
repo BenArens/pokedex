@@ -3,13 +3,14 @@ let pokemons = [];
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
 async function fetchData() {
-    for (let index = 1; index <= 8; index++) {
+    for (let index = 1; index <= 50; index++) {
         let response = await fetch(BASE_URL + index);
         pokemon = await response.json();
         pokemons.push(pokemon);
     }
-    console.log(pokemons);
     renderTemplate();
+    renderPokemonsTypes();
+    editTypeColor();
 }
 
 function renderTemplate() {
@@ -17,68 +18,71 @@ function renderTemplate() {
     contentRef.innerHTML = "";
     for (let index = 0; index < pokemons.length; index++) {
         contentRef.innerHTML += getPokemonTemplate(index);
-        editTypes(index)
     }
 }
+
+
+function renderPokemonsTypes() {
+    for (let index = 0; index < pokemons.length; index++) {
+        editTypes(index);
+    }
+}
+
+
 
 function editTypes(index) {
     let typeRef = document.getElementsByClassName("pokemon-types");
-    let thisPokemon = typeRef[index];
+    let thisPokemon = pokemons[index];
 
-
-    for (let i = 0; i < pokemons[index].types.length; i++) {
-        //for schleife weil unterschiedlich viele Types  
-       
+    for (let i = 0; i < thisPokemon.types.length; i++) {
         typeRef[index].innerHTML += getPokemonTypes(index, i);
-        editTypeColor(index);
-        
     }
-
 }
 
 
-function editTypeColor(index) {
+function editTypeColor() {
     let pokemonTypeRef = document.getElementsByClassName("type");
-    let thisType = pokemonTypeRef[index];
-    console.log(thisType.innerText);
 
-    switch (thisType.innerText){
-        case "poison": 
-        thisType.classList.add("poison");
-        break;
-        case "grass": 
-        thisType.classList.add("grass");
-        break; 
-        case "fire": 
-        thisType.classList.add("fire");
-        break; 
-        case "flying": 
-        thisType.classList.add("flying"); 
-        case "water": 
-        thisType.classList.add("water"); 
-        break;
-        case "bug": 
-        thisType.classList.add("bug"); 
-        break;
-        case "normal":
-        thisType.classList.add("normal");
-        break; 
-        case "electric": 
-        thisType.classList.add("electric"); 
-        break; 
-        case "ground": 
-        thisType.classList.add("ground");
-        default: 
-        break; 
+    for (let i = 0; i < pokemonTypeRef.length; i++) {
+        let thisType = pokemonTypeRef[i];
+        console.log(thisType.innerText);
+
+
+        switch (thisType.innerText) {
+            case "poison":
+                thisType.classList.add("poison");
+                break;
+            case "grass":
+                thisType.classList.add("grass");
+                break;
+            case "fire":
+                thisType.classList.add("fire");
+                break;
+            case "flying":
+                thisType.classList.add("flying");
+                break;
+            case "water":
+                thisType.classList.add("water");
+                break;
+            case "bug":
+                thisType.classList.add("bug");
+                break;
+            case "normal":
+                thisType.classList.add("normal");
+                break;
+            case "electric":
+                thisType.classList.add("electric");
+                break;
+            case "ground":
+                thisType.classList.add("ground");
+                break;
+            default:
+                console.log("hallo Welt");
+                break;
+        }
+
     }
-        
 
 
-
-    // if (thisType.innerText == "poison") {
-    //     thisType.classList.add("poison");
-    // } else if (thisType.innerText == "grass"){
-    //     thisType.classList.add("grass"); 
-    // }
 
 }
