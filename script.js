@@ -3,7 +3,7 @@ let pokemons = [];
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
 async function fetchData() {
-    for (let index = 1; index <= 50; index++) {
+    for (let index = 1; index <= 8; index++) {
         let response = await fetch(BASE_URL + index);
         pokemon = await response.json();
         pokemons.push(pokemon);
@@ -28,9 +28,10 @@ function editTypes(index) {
 
     for (let i = 0; i < pokemons[index].types.length; i++) {
         //for schleife weil unterschiedlich viele Types  
+       
         typeRef[index].innerHTML += getPokemonTypes(index, i);
-
         editTypeColor(index);
+        
     }
 
 }
@@ -68,7 +69,6 @@ function editTypeColor(index) {
         case "ground": 
         thisType.classList.add("ground");
         default: 
-        console.log("hallo Welt");
         break; 
     }
         
