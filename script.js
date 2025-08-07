@@ -3,7 +3,7 @@ let pokemons = [];
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
 async function fetchData() {
-    for (let index = 1; index <= 50; index++) {
+    for (let index = 1; index <= 15; index++) {
         let response = await fetch(BASE_URL + index);
         pokemon = await response.json();
         pokemons.push(pokemon);
