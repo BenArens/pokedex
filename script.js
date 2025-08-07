@@ -80,9 +80,17 @@ function editTypeColor() {
                 console.log("hallo Welt");
                 break;
         }
-
     }
+}
 
-
-
+async function morePokemon(){
+    let currentPokemens = pokemons.length
+    for (let index = pokemons.length +1 ; index <= currentPokemens + 15; index++) {
+        let response = await fetch(BASE_URL + index);
+        pokemon = await response.json();
+        pokemons.push(pokemon);
+    }
+    renderTemplate();
+    renderPokemonsTypes();
+    editTypeColor();
 }
