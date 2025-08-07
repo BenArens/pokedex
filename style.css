@@ -5,6 +5,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+nav {
+    background-color: #EF5350;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 .myButton {
     display: flex;
@@ -14,7 +18,7 @@
     border-radius: 5px;
     border: 0;
     font-size: 20px;
-    background-color: #30A7D7;
+    background-color: #ef5350;
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     justify-content: center;
@@ -50,6 +54,12 @@ body {
     flex-direction: column;
     cursor: pointer;
 }
+.preview-pokemon:hover{
+    scale: 1.1;
+    transition: all 0.5s;
+}
+
+
 
 .preview-pokemon img {
     width: 200px;
@@ -57,6 +67,8 @@ body {
     background-color: #f0f0f0;
     border-radius: 12px;
 }
+
+
 
 .pokemon-number {
     color: grey;

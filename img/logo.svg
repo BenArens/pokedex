@@ -1,0 +1,23 @@
+<svg width="220" height="60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hintergrund des Logos -->
+  <rect width="220" height="60" fill="#ef5350" rx="10" />
+
+  <!-- Pokéball -->
+  <g transform="translate(20,10)">
+    <!-- obere Hälfte rot -->
+    <path d="M0,20 a20,20 0 1,1 40,0" fill="#e53935" />
+    <!-- untere Hälfte weiß -->
+    <path d="M0,20 a20,20 0 1,0 40,0" fill="#ffffff" />
+    <!-- schwarzer Mittelstreifen -->
+    <rect x="0" y="18" width="40" height="4" fill="black" />
+    <!-- äußerer Kreis des Knopfes -->
+    <circle cx="20" cy="20" r="6" fill="white" stroke="black" stroke-width="2" />
+    <!-- innerer Kreis des Knopfes -->
+    <circle cx="20" cy="20" r="2.5" fill="#2196f3" />
+  </g>
+
+  <!-- PokéDex Text -->
+  <text x="70" y="38" font-family="Verdana" font-size="24" fill="white" font-weight="bold">
+    PokéDex
+  </text>
+</svg>
