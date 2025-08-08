@@ -65,31 +65,31 @@ function editTypeColor() {
 
 
         switch (thisType.innerText) {
-            case "poison":
+            case "Poison":
                 thisType.classList.add("poison");
                 break;
-            case "grass":
+            case "Grass":
                 thisType.classList.add("grass");
                 break;
-            case "fire":
+            case "Fire":
                 thisType.classList.add("fire");
                 break;
-            case "flying":
+            case "Flying":
                 thisType.classList.add("flying");
                 break;
-            case "water":
+            case "Water":
                 thisType.classList.add("water");
                 break;
-            case "bug":
+            case "Bug":
                 thisType.classList.add("bug");
                 break;
-            case "normal":
+            case "Normal":
                 thisType.classList.add("normal");
                 break;
-            case "electric":
+            case "Electric":
                 thisType.classList.add("electric");
                 break;
-            case "ground":
+            case "Ground":
                 thisType.classList.add("ground");
                 break;
             default:
@@ -107,6 +107,21 @@ function generateNumber(index, length = 4, prefix = ''){
 //Macht den ersten Buchstaben groß
 function capitalizeFirstLetter(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
+}
+
+function openPokemon(){
+    noScroll(); 
+    displayNone(); 
+}
+
+function noScroll(){
+    let myBody = document.querySelector("body");
+    myBody.classList.toggle("noScroll");
+}
+
+function displayNone(){
+    let myDialog = document.getElementById("dialog");
+    myDialog.classList.toggle("displayNone"); 
 }
 
 
