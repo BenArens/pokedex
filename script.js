@@ -23,9 +23,12 @@ async function fetchData() {
 async function morePokemon(){
     let currentPokemens = pokemons.length
     for (let index = pokemons.length +1 ; index <= currentPokemens + 10; index++) {
-        let response = await fetch(BASE_URL + index);
+        let response = await fetch(BASE_URL + pokemonFolder + index);
         pokemon = await response.json();
+        let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
+        responseSpecies = await responseSpecies.json();
         pokemons.push(pokemon);
+        species.push(responseSpecies); 
     }
     renderTemplate();
     renderPokemonsTypes();
@@ -120,6 +123,7 @@ function openPokemon(index){
     openDialog.innerHTML = openPokemonDialog(index); 
 
     noScroll(); 
+    editLineStats(index);
     displayNone(index); 
 }
 
@@ -137,6 +141,16 @@ function displayNone(){
     }
 }
 
+
+function editLineStats(index){
+    let hpLine = document.getElementById('hp-line'); 
+    let attackLine = document.getElementById('attack-line');
+    let defenceLine = document.getElementById('defence-line'); 
+   
+    hpLine.style.width = pokemons[index].stats[0].base_stat*2 +"px"; 
+    attackLine.style.width = pokemons[index].stats[1].base_stat*2 +"px"; 
+    defenceLine.style.width = pokemons[index].stats[2].base_stat*2 +"px";
+}
 
 
 

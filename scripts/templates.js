@@ -28,18 +28,17 @@ function openPokemonDialog(index){
                         <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
                         <div class="stats">
                             <div class="attribute-container">
-                                <div class="attribute"><span>HP</span><span class="number">50</span></div>
-                                <div class="line hp"></div>
+                                <div class="attribute"><span>HP</span><span class="number">${pokemons[index].stats[0].base_stat}</span></div>
+                                <div id="hp-line" class="line"></div>
                             </div>
                             <div class="attribute-container">
-                                <div class="attribute"><span>Attack</span><span class="number">50</span></div>
-                                <div class="line attack"></div>
+                                <div class="attribute"><span>Attack</span><span class="number">${pokemons[index].stats[1].base_stat}</span></div>
+                                <div id="attack-line" class="line"></div>
                             </div>
                             <div class="attribute-container">
-                                <div class="attribute"><span>Defence</span><span class="number">50</span></div>
-                                <div class="line defence"></div>
+                                <div class="attribute"><span>Defence</span><span class="number">${pokemons[index].stats[2].base_stat}</span></div>
+                                <div id="defence-line" class="line"></div>
                             </div>
-
                         </div>
                     </div>
 
