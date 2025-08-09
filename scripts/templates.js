@@ -1,5 +1,5 @@
 function getPokemonTemplate(index) {
-    return `   <div class="preview-pokemon">
+    return `   <div onclick="openPokemon(${index})" class="preview-pokemon">
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
             <span class="pokemon-number">${generateNumber(index+1,4,'#')}</span>
             <span class="pokemon-name">${capitalizeFirstLetter(pokemons[index].name)}</span>
@@ -11,6 +11,76 @@ function getPokemonTemplate(index) {
 
 function getPokemonTypes(index, i) {
     return `
-      <span class="type">${pokemons[index].types[i].type.name}</span>
+      <span class="type">${capitalizeFirstLetter(pokemons[index].types[i].type.name)}</span>
     `
+}
+
+
+function openPokemonDialog(index){
+  return`           <div class="open-pokemon">
+
+                <span class="arrow-left material-symbols-outlined">arrow_circle_left</span>
+                <span class="arrow-right material-symbols-outlined">arrow_circle_right</span>
+
+                <div class="card">
+                    <div class="left-card">
+                        <h2>${capitalizeFirstLetter(pokemons[index].name)}</h2>
+                        <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
+                        <div class="stats">
+                            <div class="attribute-container">
+                                <div class="attribute"><span>HP</span><span class="number">50</span></div>
+                                <div class="line hp"></div>
+                            </div>
+                            <div class="attribute-container">
+                                <div class="attribute"><span>Attack</span><span class="number">50</span></div>
+                                <div class="line attack"></div>
+                            </div>
+                            <div class="attribute-container">
+                                <div class="attribute"><span>Defence</span><span class="number">50</span></div>
+                                <div class="line defence"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="right-card">
+                        <p>
+                            ${species[index].flavor_text_entries[11].flavor_text}
+                        </p>
+
+                        <div class="box">
+                            <div class="left-box">
+                                <div class="value-attribute">
+                                    <h4>Height</h4>
+                                    <span class="value">0,7 m</span>
+                                </div>
+                                <div class="value-attribute">
+                                    <h4>Weight</h4>
+                                    <span class="value">6,9 kg</span>
+                                </div>
+                                <div class="vlaue-attribute">
+                                    <h4>Sex</h4>
+                                    <div class="value">male/female</div>
+                                </div>
+                            </div>
+                            <div class="right-box">
+                                <div class="value-attribute">
+                                    <h4>Height</h4>
+                                    <span class="value">0,7 m</span>
+                                </div>
+                                <div class="value-attribute">
+                                    <h4>Weight</h4>
+                                    <span class="value">6,9 kg</span>
+                                </div>
+                                <div class="vlaue-attribute">
+                                    <h4>Sex</h4>
+                                    <div class="value">male/female</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>`
 }

@@ -1,12 +1,18 @@
 let pokemon = [];
 let pokemons = [];
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+let species = [];
+const BASE_URL = "https://pokeapi.co/api/v2";
+const pokemonFolder = "/pokemon/"; 
+const speciesFolder ="/pokemon-species/";
 
 async function fetchData() {
     for (let index = 1; index <= 10; index++) {
-        let response = await fetch(BASE_URL + index);
+        let response = await fetch(BASE_URL + pokemonFolder + index);
         pokemon = await response.json();
+        let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
+        responseSpecies = await responseSpecies.json();
         pokemons.push(pokemon);
+        species.push(responseSpecies); 
     }
     renderTemplate();
     renderPokemonsTypes();
@@ -61,7 +67,7 @@ function editTypeColor() {
 
     for (let i = 0; i < pokemonTypeRef.length; i++) {
         let thisType = pokemonTypeRef[i];
-        console.log(thisType.innerText);
+        
 
 
         switch (thisType.innerText) {
@@ -109,9 +115,12 @@ function capitalizeFirstLetter(val) {
   return val.charAt(0).toUpperCase() + val.slice(1);
 }
 
-function openPokemon(){
+function openPokemon(index){
+    let openDialog = document.getElementById("dialog");
+    openDialog.innerHTML = openPokemonDialog(index); 
+
     noScroll(); 
-    displayNone(); 
+    displayNone(index); 
 }
 
 function noScroll(){
@@ -121,7 +130,11 @@ function noScroll(){
 
 function displayNone(){
     let myDialog = document.getElementById("dialog");
-    myDialog.classList.toggle("displayNone"); 
+    if (myDialog.style.display === "none" || myDialog.style.display ===""){
+        myDialog.style.display = "flex";
+    } else {
+        myDialog.style.display = "none"; 
+    }
 }
 
 
