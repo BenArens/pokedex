@@ -119,9 +119,7 @@ function capitalizeFirstLetter(val) {
 }
 
 function openPokemon(index){
-    let openDialog = document.getElementById("dialog");
-    openDialog.innerHTML = openPokemonDialog(index); 
-
+    changePokemon(index);
     noScroll(); 
     editLineStats(index);
     displayNone(index); 
@@ -141,6 +139,11 @@ function displayNone(){
     }
 }
 
+function closePreview(){
+    noScroll();
+    displayNone(); 
+}
+
 
 function editLineStats(index){
     let hpLine = document.getElementById('hp-line'); 
@@ -152,6 +155,26 @@ function editLineStats(index){
     defenceLine.style.width = pokemons[index].stats[2].base_stat*2 +"px";
 }
 
+function changePokemon(index){
+    let openDialog = document.getElementById("dialog");
+    openDialog.innerHTML = openPokemonDialog(index); 
+    editLineStats(index)
+}
 
+function forward(index){
+    index++; 
+    if (index === pokemons.length){
+        index = 0;
+    }
+    changePokemon(index);
+}
 
+function backward(index){
+    index--;
+    if (index < 0 ){
+        index = pokemons.length; 
+        index--;
+    }
+    changePokemon(index); 
+}
 

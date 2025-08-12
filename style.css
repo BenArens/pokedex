@@ -285,7 +285,7 @@ body {
 }
 
 .box {
-    margin-top: 13%;
+    margin: 30px 0 30px 0;
     display: flex;
     gap: 20px;
     background-color: #87B79D;
@@ -311,6 +311,9 @@ body {
     .open-pokemon {
         width: 95%;
         background-color: rgb(255 255 255 / 96%);
+        overflow-y: auto;
+        max-height: none;
+        height: 89%;
     }
 
     .card {
@@ -319,12 +322,13 @@ body {
 
     .left-card {
         margin-left: 0;
-        margin-top: 14%;
+        margin-top: 60px;
         width: 100%;
     }
 
     .right-card {
         margin: 4% 0% 0% 0%;
+        width: 100%;
     }
     .pokemon-img{
         margin: auto;

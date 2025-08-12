@@ -19,8 +19,8 @@ function getPokemonTypes(index, i) {
 function openPokemonDialog(index){
   return`           <div class="open-pokemon">
 
-                <span class="arrow-left material-symbols-outlined">arrow_circle_left</span>
-                <span class="arrow-right material-symbols-outlined">arrow_circle_right</span>
+                <span onclick="backward(${index})" class="arrow-left material-symbols-outlined">arrow_circle_left</span>
+                <span onclick="forward(${index})" class="arrow-right material-symbols-outlined">arrow_circle_right</span>
 
                 <div class="card">
                     <div class="left-card">
