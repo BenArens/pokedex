@@ -1,4 +1,4 @@
-let pokemon = [];
+// let pokemon = [];
 let pokemons = [];
 let species = [];
 const BASE_URL = "https://pokeapi.co/api/v2";
@@ -7,16 +7,25 @@ const speciesFolder ="/pokemon-species/";
 
 async function fetchData() {
     for (let index = 1; index <= 10; index++) {
-        let response = await fetch(BASE_URL + pokemonFolder + index);
-        pokemon = await response.json();
-        let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
-        responseSpecies = await responseSpecies.json();
-        pokemons.push(pokemon);
-        species.push(responseSpecies); 
+        await fetchPokemon(index);
+        await fetchSpecies(index);
     }
     renderTemplate();
     renderPokemonsTypes();
     editTypeColor();
+    
+}
+
+ async function fetchPokemon(index) {
+    let responsePokemon = await fetch (BASE_URL + pokemonFolder + index);
+    responsePokemon = await responsePokemon.json();
+    pokemons.push(responsePokemon);
+}
+
+async function fetchSpecies(index){
+    let responseSpecies = await fetch (BASE_URL + speciesFolder + index);
+    responseSpecies = await responseSpecies.json(); 
+    species.push(responseSpecies);
 }
 
 

@@ -80,6 +80,14 @@ function openPokemonDialog(index){
                         </div>
 
                     </div>
+                    
+                </div>
+                <div class="evolution-chain">
+                    <h2>Evolution Chain</h2>
+                    <div class="evolution-pokemon">
+                        <img class="evolution-img" src="" alt="">
+                        <h3 class="evolution-name">Evolution Name</h3>
+                    </div>
                 </div>
             </div>`
 }

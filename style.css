@@ -199,7 +199,7 @@ body {
 .open-pokemon {
     background-color: rgb(255 255 255 / 78%);
     width: 80%;
-    height: 80%;
+    height: 90%;
     border: 3px solid #ef5350;
     border-radius: 12px 12px 0 0;
     padding: 40px;
@@ -207,8 +207,8 @@ body {
     border-bottom: none;
     position: relative;
     display: flex;
-    justify-content: center;
-    max-height: 600px;
+    max-height: 710px;
+    flex-direction: column;
 }
 
 
@@ -230,7 +230,7 @@ body {
 
 
 .left-card {
-    margin: 6% 0 0 7%;
+    margin: 40px 0 0 40px;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -277,10 +277,11 @@ body {
 .card {
     display: flex;
     max-width: 1000px;
+
 }
 
 .right-card {
-    margin: 6% 7% 0% 0%;
+    margin: 40px 40px 0% 0%;
     width: 50%;
 }
 
@@ -304,6 +305,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.evolution-chain{
+    margin: 40px 0 0 40px;
 }
 
 
