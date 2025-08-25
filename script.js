@@ -1,9 +1,12 @@
 // let pokemon = [];
 let pokemons = [];
 let species = [];
+let evolutions = [];
 const BASE_URL = "https://pokeapi.co/api/v2";
 const pokemonFolder = "/pokemon/"; 
 const speciesFolder ="/pokemon-species/";
+const evolutionChain = "/evolution-chain/";
+
 
 async function fetchData() {
     for (let index = 1; index <= 10; index++) {
@@ -13,7 +16,6 @@ async function fetchData() {
     renderTemplate();
     renderPokemonsTypes();
     editTypeColor();
-    
 }
 
  async function fetchPokemon(index) {
@@ -27,6 +29,9 @@ async function fetchSpecies(index){
     responseSpecies = await responseSpecies.json(); 
     species.push(responseSpecies);
 }
+
+
+
 
 
 async function morePokemon(){
@@ -80,8 +85,6 @@ function editTypeColor() {
     for (let i = 0; i < pokemonTypeRef.length; i++) {
         let thisType = pokemonTypeRef[i];
         
-
-
         switch (thisType.innerText) {
             case "Poison":
                 thisType.classList.add("poison");
@@ -131,6 +134,7 @@ function openPokemon(index){
     changePokemon(index);
     noScroll(); 
     editLineStats(index);
+    fetchEvolution(index)
     displayNone(index); 
 }
 
@@ -168,6 +172,15 @@ function changePokemon(index){
     let openDialog = document.getElementById("dialog");
     openDialog.innerHTML = openPokemonDialog(index); 
     editLineStats(index)
+}
+
+async function fetchEvolution(index) {
+    evolutions = [];
+    let evolutionUrl = species[index].evolution_chain.url;
+    
+    let responseEvolution = await fetch (evolutionUrl);
+    responseEvolution = await responseEvolution.json();
+    evolutions.push(responseEvolution);
 }
 
 function forward(index){
