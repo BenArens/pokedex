@@ -308,9 +308,13 @@ body {
 }
 
 .evolution-chain{
-    margin: 40px 0 0 40px;
+    margin: 40px 40px 0 40px;
 }
 
+.evolution-container{
+    display: flex;
+    justify-content: space-between;
+}
 
 @media(max-width:600px) {
     .open-pokemon {

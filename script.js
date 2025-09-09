@@ -2,10 +2,10 @@
 let pokemons = [];
 let species = [];
 let evolutions = [];
-const BASE_URL = "https://pokeapi.co/api/v2";
-const pokemonFolder = "/pokemon/"; 
-const speciesFolder ="/pokemon-species/";
-const evolutionChain = "/evolution-chain/";
+const BASE_URL = "https://pokeapi.co/api/v2/";
+const pokemonFolder = "pokemon/";
+const speciesFolder = "pokemon-species/";
+const evolutionChain = "evolution-chain/";
 
 
 async function fetchData() {
@@ -18,15 +18,15 @@ async function fetchData() {
     editTypeColor();
 }
 
- async function fetchPokemon(index) {
-    let responsePokemon = await fetch (BASE_URL + pokemonFolder + index);
+async function fetchPokemon(index) {
+    let responsePokemon = await fetch(BASE_URL + pokemonFolder + index);
     responsePokemon = await responsePokemon.json();
     pokemons.push(responsePokemon);
 }
 
-async function fetchSpecies(index){
-    let responseSpecies = await fetch (BASE_URL + speciesFolder + index);
-    responseSpecies = await responseSpecies.json(); 
+async function fetchSpecies(index) {
+    let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
+    responseSpecies = await responseSpecies.json();
     species.push(responseSpecies);
 }
 
@@ -34,15 +34,15 @@ async function fetchSpecies(index){
 
 
 
-async function morePokemon(){
+async function morePokemon() {
     let currentPokemens = pokemons.length
-    for (let index = pokemons.length +1 ; index <= currentPokemens + 10; index++) {
+    for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
         let response = await fetch(BASE_URL + pokemonFolder + index);
         pokemon = await response.json();
         let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
         responseSpecies = await responseSpecies.json();
         pokemons.push(pokemon);
-        species.push(responseSpecies); 
+        species.push(responseSpecies);
     }
     renderTemplate();
     renderPokemonsTypes();
@@ -84,7 +84,7 @@ function editTypeColor() {
 
     for (let i = 0; i < pokemonTypeRef.length; i++) {
         let thisType = pokemonTypeRef[i];
-        
+
         switch (thisType.innerText) {
             case "Poison":
                 thisType.classList.add("poison");
@@ -121,82 +121,118 @@ function editTypeColor() {
 }
 
 //setzt "4 nullen" vor die Nummer
-function generateNumber(index, length = 4, prefix = ''){
+function generateNumber(index, length = 4, prefix = '') {
     return prefix + index.toString().padStart(length, '0');
 }
 
 //Macht den ersten Buchstaben groß
 function capitalizeFirstLetter(val) {
-  return val.charAt(0).toUpperCase() + val.slice(1);
+    return val.charAt(0).toUpperCase() + val.slice(1);
 }
 
-function openPokemon(index){
+function openPokemon(index) {
     changePokemon(index);
-    noScroll(); 
+    noScroll();
     editLineStats(index);
     fetchEvolution(index)
-    displayNone(index); 
+    displayNone(index);
 }
 
-function noScroll(){
+function noScroll() {
     let myBody = document.querySelector("body");
     myBody.classList.toggle("noScroll");
 }
 
-function displayNone(){
+function displayNone() {
     let myDialog = document.getElementById("dialog");
-    if (myDialog.style.display === "none" || myDialog.style.display ===""){
+    if (myDialog.style.display === "none" || myDialog.style.display === "") {
         myDialog.style.display = "flex";
     } else {
-        myDialog.style.display = "none"; 
+        myDialog.style.display = "none";
     }
 }
 
-function closePreview(){
+function closePreview() {
     noScroll();
-    displayNone(); 
+    displayNone();
 }
 
 
-function editLineStats(index){
-    let hpLine = document.getElementById('hp-line'); 
+function editLineStats(index) {
+    let hpLine = document.getElementById('hp-line');
     let attackLine = document.getElementById('attack-line');
-    let defenceLine = document.getElementById('defence-line'); 
-   
-    hpLine.style.width = pokemons[index].stats[0].base_stat*2 +"px"; 
-    attackLine.style.width = pokemons[index].stats[1].base_stat*2 +"px"; 
-    defenceLine.style.width = pokemons[index].stats[2].base_stat*2 +"px";
+    let defenceLine = document.getElementById('defence-line');
+
+    hpLine.style.width = pokemons[index].stats[0].base_stat * 2 + "px";
+    attackLine.style.width = pokemons[index].stats[1].base_stat * 2 + "px";
+    defenceLine.style.width = pokemons[index].stats[2].base_stat * 2 + "px";
 }
 
-function changePokemon(index){
+function changePokemon(index) {
     let openDialog = document.getElementById("dialog");
-    openDialog.innerHTML = openPokemonDialog(index); 
+    openDialog.innerHTML = openPokemonDialog(index);
     editLineStats(index)
 }
 
 async function fetchEvolution(index) {
     evolutions = [];
     let evolutionUrl = species[index].evolution_chain.url;
-    
-    let responseEvolution = await fetch (evolutionUrl);
+
+    let responseEvolution = await fetch(evolutionUrl);
     responseEvolution = await responseEvolution.json();
     evolutions.push(responseEvolution);
+    updateEvolution();
+    
 }
 
-function forward(index){
-    index++; 
-    if (index === pokemons.length){
+function forward(index) {
+    index++;
+    if (index === pokemons.length) {
         index = 0;
+    }
+    changePokemon(index);
+    fetchEvolution(index)
+}
+
+function backward(index) {
+    index--;
+    if (index < 0) {
+        index = pokemons.length;
+        index--;
     }
     changePokemon(index);
 }
 
-function backward(index){
-    index--;
-    if (index < 0 ){
-        index = pokemons.length; 
-        index--;
+
+function renderEvolutions() {
+    let evolutionChainRef = document.getElementById("evolutionsChain");
+    evolutionChainRef.innerHTML = "";
+    evolutionChainRef.innerHTML = getEvolutionChainTemplate();
+}
+
+function updateEvolution() {
+    entwicklungen = [];
+    entwicklungen.push({ name: evolutions[0].chain.species.name }, { name: evolutions[0].chain.evolves_to[0].species.name });
+    if (evolutions[0].chain.evolves_to[0].evolves_to.length > 0){
+        entwicklungen.push({ name: evolutions[0].chain.evolves_to[0].evolves_to[0].species.name })
+    } else{
+        entwicklungen.push({name: ""})
     }
-    changePokemon(index); 
+    
+    renderEvolutions();
+    getEvoImg()
+}
+
+async function getEvoImg() {
+    let thisEvoPokemon= [];
+    let evoPokemon = await fetch (BASE_URL + "pokemon/" + entwicklungen[0].name);
+    evoPokemon = await evoPokemon.json();
+    console.log(evoPokemon);
+    thisEvoPokemon.push(evoPokemon);
+    
+    let limit = thisEvoPokemon[0].id+2; 
+    for (let index = 0; index < limit; index++) {
+        entwicklungen[index].id = thisEvoPokemon[0].id; 
+    }
 }
 

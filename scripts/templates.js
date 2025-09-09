@@ -82,13 +82,30 @@ function openPokemonDialog(index){
                     </div>
                     
                 </div>
-                <div class="evolution-chain">
-                    <h2>Evolution Chain</h2>
-                    <div class="evolution-pokemon">
-                        <img class="evolution-img" src="" alt="">
-                        <h3 class="evolution-name">Evolution Name</h3>
-                        <span class="pokemon-evolution-chain">Hallo Welt</span>
-                    </div>
+                <div id="evolutionsChain" class="evolution-chain">
+                  
                 </div>
             </div>`
+}
+
+function getEvolutionChainTemplate(){
+    return`  <h2>Evolution Chain</h2>
+    <div class="evolution-container">
+                    <div class="evolution-pokemon">
+                        <img class="evolution-img" src="" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[0].name)}</h3>
+                        <span class="pokemon-evolution-chain">Hallo Welt</span>
+                    </div>
+                    <div class="evolution-pokemon">
+                        <img class="evolution-img" src="" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[1].name)}</h3>
+                        <span class="pokemon-evolution-chain">Hallo Welt</span>
+                    </div>
+                    <div class="evolution-pokemon">
+                        <img class="evolution-img" src="" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[2].name)}</h3>
+                        <span class="pokemon-evolution-chain">Hallo Welt</span>
+                    </div>
+    </div>
+`
 }
