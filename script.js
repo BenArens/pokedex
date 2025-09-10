@@ -9,7 +9,7 @@ const evolutionChain = "evolution-chain/";
 
 
 async function fetchData() {
-    for (let index = 1; index <= 9; index++) {
+    for (let index = 1; index <= 10; index++) {
         await fetchPokemon(index);
         await fetchSpecies(index);
     }
@@ -36,7 +36,7 @@ async function fetchSpecies(index) {
 
 async function morePokemon() {
     let currentPokemens = pokemons.length
-    for (let index = pokemons.length + 1; index <= currentPokemens + 9; index++) {
+    for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
         let response = await fetch(BASE_URL + pokemonFolder + index);
         pokemon = await response.json();
         let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
@@ -214,30 +214,27 @@ function updateEvolution() {
     entwicklungen.push({ name: evolutions[0].chain.species.name }, { name: evolutions[0].chain.evolves_to[0].species.name });
     if (evolutions[0].chain.evolves_to[0].evolves_to.length > 0) {
         entwicklungen.push({ name: evolutions[0].chain.evolves_to[0].evolves_to[0].species.name })
-    } else {
-        entwicklungen.push({ name: "" })
+    } else{
+        entwicklungen.push({name: "", image_url: ""})
     }
-    getEvoImg()
+    updateEvo();
 }
 
-async function getEvoImg() {
-    let thisEvoPokemon = [];
-    let evoPokemon = await fetch(BASE_URL + "pokemon/" + entwicklungen[0].name);
-    evoPokemon = await evoPokemon.json();
-    console.log(evoPokemon);
-    thisEvoPokemon.push(evoPokemon);
 
-    for (let index = 0; index < 3; index++) {
-        entwicklungen[index].id = thisEvoPokemon[0].id;
-        addImgUrl(index);
-        thisEvoPokemon[0].id++;
+
+
+async function updateEvo() {
+    for (let index = 0; index < entwicklungen.length; index++) {
+        if (entwicklungen[index].name.length != 0) {
+            let evoPokemon = await fetch(BASE_URL + "pokemon/" + entwicklungen[index].name)
+            evoPokemon = await evoPokemon.json()
+            entwicklungen[index] = evoPokemon;
+            entwicklungen[index].img_url = entwicklungen[index].sprites.front_default;
+        }
     }
     renderEvolutions();
+    superTest()
 }
 
-function addImgUrl(index) {
-    
-    if (entwicklungen[index].name.length != 0) {
-        entwicklungen[index].img_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + entwicklungen[index].id + ".png";
-    }
-}
+
+
