@@ -182,7 +182,6 @@ async function fetchEvolution(index) {
     responseEvolution = await responseEvolution.json();
     evolutions.push(responseEvolution);
     updateEvolution();
-    
 }
 
 function forward(index) {
@@ -213,26 +212,32 @@ function renderEvolutions() {
 function updateEvolution() {
     entwicklungen = [];
     entwicklungen.push({ name: evolutions[0].chain.species.name }, { name: evolutions[0].chain.evolves_to[0].species.name });
-    if (evolutions[0].chain.evolves_to[0].evolves_to.length > 0){
+    if (evolutions[0].chain.evolves_to[0].evolves_to.length > 0) {
         entwicklungen.push({ name: evolutions[0].chain.evolves_to[0].evolves_to[0].species.name })
-    } else{
-        entwicklungen.push({name: ""})
+    } else {
+        entwicklungen.push({ name: "" })
     }
-    
-    renderEvolutions();
     getEvoImg()
 }
 
 async function getEvoImg() {
-    let thisEvoPokemon= [];
-    let evoPokemon = await fetch (BASE_URL + "pokemon/" + entwicklungen[0].name);
+    let thisEvoPokemon = [];
+    let evoPokemon = await fetch(BASE_URL + "pokemon/" + entwicklungen[0].name);
     evoPokemon = await evoPokemon.json();
     console.log(evoPokemon);
     thisEvoPokemon.push(evoPokemon);
-    
-    let limit = thisEvoPokemon[0].id+2; 
-    for (let index = 0; index < limit; index++) {
-        entwicklungen[index].id = thisEvoPokemon[0].id; 
+
+    let limit = thisEvoPokemon[0].id + 2;
+    for (let index = 0; index < 3; index++) {
+        entwicklungen[index].id = thisEvoPokemon[0].id;
+        addImgUrl(index);
+        thisEvoPokemon[0].id++;
     }
+    renderEvolutions();
 }
 
+function addImgUrl(index) {
+    let evoId = entwicklungen[index].id;
+    evoId--; 
+    entwicklungen[index].img_url = pokemons[evoId].sprites.front_default;
+}
