@@ -9,7 +9,7 @@ const evolutionChain = "evolution-chain/";
 
 
 async function fetchData() {
-    for (let index = 1; index <= 10; index++) {
+    for (let index = 1; index <= 9; index++) {
         await fetchPokemon(index);
         await fetchSpecies(index);
     }
@@ -36,7 +36,7 @@ async function fetchSpecies(index) {
 
 async function morePokemon() {
     let currentPokemens = pokemons.length
-    for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
+    for (let index = pokemons.length + 1; index <= currentPokemens + 9; index++) {
         let response = await fetch(BASE_URL + pokemonFolder + index);
         pokemon = await response.json();
         let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
@@ -227,7 +227,6 @@ async function getEvoImg() {
     console.log(evoPokemon);
     thisEvoPokemon.push(evoPokemon);
 
-    let limit = thisEvoPokemon[0].id + 2;
     for (let index = 0; index < 3; index++) {
         entwicklungen[index].id = thisEvoPokemon[0].id;
         addImgUrl(index);
@@ -237,7 +236,8 @@ async function getEvoImg() {
 }
 
 function addImgUrl(index) {
-    let evoId = entwicklungen[index].id;
-    evoId--; 
-    entwicklungen[index].img_url = pokemons[evoId].sprites.front_default;
+    
+    if (entwicklungen[index].name.length != 0) {
+        entwicklungen[index].img_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + entwicklungen[index].id + ".png";
+    }
 }
