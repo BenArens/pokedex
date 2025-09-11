@@ -1,7 +1,7 @@
 function getPokemonTemplate(index) {
     return `   <div onclick="openPokemon(${index})" class="preview-pokemon">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
-            <span class="pokemon-number">${generateNumber(index+1,4,'#')}</span>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png" alt="">
+            <span class="pokemon-number">${generateNumber(index + 1, 4, '#')}</span>
             <span class="pokemon-name">${capitalizeFirstLetter(pokemons[index].name)}</span>
             <div class="pokemon-types">
                
@@ -16,8 +16,8 @@ function getPokemonTypes(index, i) {
 }
 
 
-function openPokemonDialog(index){
-  return`           <div class="open-pokemon">
+function openPokemonDialog(index) {
+    return `           <div class="open-pokemon">
 
                 <span onclick="backward(${index})" class="arrow-left material-symbols-outlined">arrow_circle_left</span>
                 <span onclick="forward(${index})" class="arrow-right material-symbols-outlined">arrow_circle_right</span>
@@ -25,7 +25,7 @@ function openPokemonDialog(index){
                 <div class="card">
                     <div class="left-card">
                         <h2>${capitalizeFirstLetter(pokemons[index].name)}</h2>
-                        <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index+1}.png" alt="">
+                        <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png" alt="">
                         <div class="stats">
                             <div class="attribute-container">
                                 <div class="attribute"><span>HP</span><span class="number">${pokemons[index].stats[0].base_stat}</span></div>
@@ -88,8 +88,8 @@ function openPokemonDialog(index){
             </div>`
 }
 
-function getEvolutionChainTemplate(){
-    return`  <h2>Evolution Chain</h2>
+function getEvolutionChainTemplate() {
+    return `  <h2>Evolution Chain</h2>
     <div class="evolution-container">
                     <div class="evolution-pokemon">
                         <img class="evolution-img" src="${entwicklungen[0].img_url}" alt="">
@@ -105,4 +105,18 @@ function getEvolutionChainTemplate(){
                     </div>
     </div>
 `
+}
+
+function getWorkplaceTemplate() {
+    return ` <div id="pokemon" class="pokemons">
+            <div class="mySpinner"><img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"></div><div id="pokemon" class="pokemons"></div>
+        </div>
+        <button class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more
+            Pokémons
+        </button>
+
+
+        <div id="dialog" class="openPokemon-dialog">
+
+        </div>`
 }

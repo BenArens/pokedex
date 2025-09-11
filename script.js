@@ -7,15 +7,13 @@ const pokemonFolder = "pokemon/";
 const speciesFolder = "pokemon-species/";
 const evolutionChain = "evolution-chain/";
 
-
 async function fetchData() {
     for (let index = 1; index <= 10; index++) {
         await fetchPokemon(index);
         await fetchSpecies(index);
     }
-    renderTemplate();
-    renderPokemonsTypes();
-    editTypeColor();
+    getWorkplace();
+    setTimeout(renderFunction,1000);
 }
 
 async function fetchPokemon(index) {
@@ -30,8 +28,11 @@ async function fetchSpecies(index) {
     species.push(responseSpecies);
 }
 
-
-
+function renderFunction(){
+    renderTemplate();
+    renderPokemonsTypes();
+    editTypeColor();
+}
 
 
 async function morePokemon() {
@@ -44,12 +45,9 @@ async function morePokemon() {
         pokemons.push(pokemon);
         species.push(responseSpecies);
     }
-    renderTemplate();
-    renderPokemonsTypes();
-    editTypeColor();
+    getWorkplace();
+    setTimeout(renderFunction,500);
 }
-
-
 
 
 function renderTemplate() {
@@ -60,14 +58,11 @@ function renderTemplate() {
     }
 }
 
-
 function renderPokemonsTypes() {
     for (let index = 0; index < pokemons.length; index++) {
         editTypes(index);
     }
 }
-
-
 
 function editTypes(index) {
     let typeRef = document.getElementsByClassName("pokemon-types");
@@ -77,7 +72,6 @@ function editTypes(index) {
         typeRef[index].innerHTML += getPokemonTypes(index, i);
     }
 }
-
 
 function editTypeColor() {
     let pokemonTypeRef = document.getElementsByClassName("type");
@@ -233,7 +227,18 @@ async function updateEvo() {
         }
     }
     renderEvolutions();
-    superTest()
+}
+
+function showSpinner(){
+    let contentRef = document.getElementById('mainContent'); 
+    contentRef.innerHTML = '<img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"><div id="pokemon" class="pokemons"></div>'; 
+}
+
+
+function getWorkplace(){
+    let contentRef = document.getElementById('mainContent');
+    contentRef.innerHTML = ""; 
+    contentRef.innerHTML = getWorkplaceTemplate();
 }
 
 

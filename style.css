@@ -307,14 +307,34 @@ body {
     gap: 10px;
 }
 
-.evolution-chain{
+.evolution-chain {
     margin: 40px 40px 0 40px;
 }
 
-.evolution-container{
+.evolution-container {
     display: flex;
     justify-content: space-between;
 }
+
+.evolution-pokemon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mySpinner {
+    background-color: #ffffff;
+    position: absolute;
+    width: 100%;
+    left: 50px;
+    top: 0;
+    left: 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @media(max-width:600px) {
     .open-pokemon {
@@ -339,8 +359,20 @@ body {
         margin: 4% 0% 0% 0%;
         width: 100%;
     }
-    .pokemon-img{
+
+    .pokemon-img {
         margin: auto;
+    }
+
+    .evolution-chain {
+        margin: 0;
+    }
+
+    .evolution-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        overflow-x: auto;
     }
 
 }
