@@ -25,7 +25,7 @@ function openPokemonDialog(index) {
                 <div class="card">
                     <div class="left-card">
                         <h2>${capitalizeFirstLetter(pokemons[index].name)}</h2>
-                        <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png" alt="">
+                        <img class="pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemons[index].id}.png" alt="">
                         <div class="stats">
                             <div class="attribute-container">
                                 <div class="attribute"><span>HP</span><span class="number">${pokemons[index].stats[0].base_stat}</span></div>
@@ -51,11 +51,11 @@ function openPokemonDialog(index) {
                             <div class="left-box">
                                 <div class="value-attribute">
                                     <h4>Height</h4>
-                                    <span class="value">0,7 m</span>
+                                    <span class="value">${pokemons[index].height / 10}m</span>
                                 </div>
                                 <div class="value-attribute">
                                     <h4>Weight</h4>
-                                    <span class="value">6,9 kg</span>
+                                    <span class="value">${pokemons[index].weight / 10}kg</span>
                                 </div>
                                 <div class="vlaue-attribute">
                                     <h4>Sex</h4>
@@ -64,16 +64,15 @@ function openPokemonDialog(index) {
                             </div>
                             <div class="right-box">
                                 <div class="value-attribute">
-                                    <h4>Height</h4>
-                                    <span class="value">0,7 m</span>
+                                    <h4>Kategorie</h4>
+                                    <span class="value">${species[index].genera[7].genus}</span>
                                 </div>
                                 <div class="value-attribute">
-                                    <h4>Weight</h4>
-                                    <span class="value">6,9 kg</span>
+                                    <h4>Fähigkeiten</h4>
+                                    <span class="value">${capitalizeFirstLetter(pokemons[index].abilities[0].ability.name)}</span>
                                 </div>
                                 <div class="vlaue-attribute">
-                                    <h4>Sex</h4>
-                                    <div class="value">male/female</div>
+                                    
                                 </div>
                             </div>
 

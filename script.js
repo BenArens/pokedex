@@ -11,8 +11,8 @@ const evolutionChain = "evolution-chain/";
 async function fetchData() {
     for (let index = 1; index <= 10; index++) {
         await fetchPokemon(index);
-        await fetchSpecies(index);
     }
+    fetchSpecies();
     getWorkplace();
     setTimeout(renderFunction,1000);
 }
@@ -23,11 +23,19 @@ async function fetchPokemon(index) {
     pokemons.push(responsePokemon);
 }
 
-async function fetchSpecies(index) {
-    let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
-    responseSpecies = await responseSpecies.json();
-    species.push(responseSpecies);
+async function fetchSpecies() {
+    for (let index = 0; index < pokemons.length; index++) {
+        let responseSpecies = await fetch (pokemons[index].species.url);
+        responseSpecies = await responseSpecies.json();
+        species.push(responseSpecies);
+    }
 }
+
+// async function fetchSpecies(index) {
+//     let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
+//     responseSpecies = await responseSpecies.json();
+//     species.push(responseSpecies);
+// }
 
 function renderFunction(){
     renderTemplate();
@@ -259,4 +267,8 @@ function renderFilterPokemon(filterObj){
     for (let index = 0; index < pokemons.length; index++) {
         contentRef.innerHTML += getPokemonTemplate(index);
     }
+    species = []; 
+    fetchSpecies(); 
+    renderPokemonsTypes();
+    editTypeColor();
 }
