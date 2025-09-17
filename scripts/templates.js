@@ -1,7 +1,7 @@
 function getPokemonTemplate(index) {
     return `   <div onclick="openPokemon(${index})" class="preview-pokemon">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + 1}.png" alt="">
-            <span class="pokemon-number">${generateNumber(index + 1, 4, '#')}</span>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemons[index].id}.png" alt="">
+            <span class="pokemon-number">${generateNumber(pokemons[index].id, 4, '#')}</span>
             <span class="pokemon-name">${capitalizeFirstLetter(pokemons[index].name)}</span>
             <div class="pokemon-types">
                

@@ -1,5 +1,6 @@
 // let pokemon = [];
 let pokemons = [];
+let oriPokemons= pokemons;
 let species = [];
 let evolutions = [];
 const BASE_URL = "https://pokeapi.co/api/v2/";
@@ -46,6 +47,7 @@ async function morePokemon() {
         species.push(responseSpecies);
     }
     getWorkplace();
+    oriPokemons = pokemons;
     setTimeout(renderFunction,500);
 }
 
@@ -184,7 +186,7 @@ function forward(index) {
         index = 0;
     }
     changePokemon(index);
-    fetchEvolution(index)
+    fetchEvolution(index);
 }
 
 function backward(index) {
@@ -194,6 +196,7 @@ function backward(index) {
         index--;
     }
     changePokemon(index);
+    fetchEvolution(index);
 }
 
 
@@ -214,9 +217,6 @@ function updateEvolution() {
     updateEvo();
 }
 
-
-
-
 async function updateEvo() {
     for (let index = 0; index < entwicklungen.length; index++) {
         if (entwicklungen[index].name.length != 0) {
@@ -234,12 +234,29 @@ function showSpinner(){
     contentRef.innerHTML = '<img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"><div id="pokemon" class="pokemons"></div>'; 
 }
 
-
 function getWorkplace(){
     let contentRef = document.getElementById('mainContent');
     contentRef.innerHTML = ""; 
     contentRef.innerHTML = getWorkplaceTemplate();
 }
 
+function filterInput(){
+    let searchBoxInput = document.getElementById('searchBox');
+    searchBoxInput = searchBoxInput.value
+    console.log(searchBoxInput);
+    
+    let filterObj = oriPokemons;
 
+    filterObj = filterObj.filter((element) => element['name'].includes(searchBoxInput));
+    renderFilterPokemon(filterObj)
+}
 
+function renderFilterPokemon(filterObj){
+    let contentRef = document.getElementById('pokemon');
+    contentRef.innerHTML = "";
+    pokemons = filterObj; 
+    console.log(pokemons);
+    for (let index = 0; index < pokemons.length; index++) {
+        contentRef.innerHTML += getPokemonTemplate(index);
+    }
+}

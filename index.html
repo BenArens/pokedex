@@ -15,7 +15,10 @@
 
 <body onload="fetchData()">
     <nav>
-        <img onclick="closePreview()" src="./img/logo.svg" alt="">
+        <div class="innerNav">
+            <img class="logo" onclick="closePreview()" src="./img/logo.svg" alt="">
+            <input onkeyup="filterInput()" id="searchBox" type="text" class="searchBox">
+        </div>
     </nav>
     <div id="mainContent" class="main-content">
 
