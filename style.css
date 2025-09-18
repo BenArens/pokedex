@@ -202,7 +202,7 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255 255 255 / 21%);
+    background-color: rgb(255 255 255 / 90%);
     align-items: flex-end;
     max-width: 1250px;
 }
@@ -238,7 +238,6 @@ body {
     right: 20px;
     cursor: pointer;
 }
-
 
 .left-card {
     margin: 40px 0 0 40px;
@@ -352,6 +351,12 @@ body {
     border-radius: 5px;
 }
 
+img.close-icon {
+    position: absolute;
+    top: 7%;
+    right: 10px;
+    cursor: pointer;
+}
 
 @media(max-width:600px) {
     .logo{

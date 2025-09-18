@@ -17,7 +17,10 @@ function getPokemonTypes(index, i) {
 
 
 function openPokemonDialog(index) {
-    return `           <div class="open-pokemon">
+    return `<img class="close-icon" src="./img/closeIcon.svg" alt="closeIcon">  
+          <div onclick="closeProtection(event)" class="open-pokemon">
+     
+
 
                 <span onclick="backward(${index})" class="arrow-left material-symbols-outlined">arrow_circle_left</span>
                 <span onclick="forward(${index})" class="arrow-right material-symbols-outlined">arrow_circle_right</span>
@@ -115,7 +118,7 @@ function getWorkplaceTemplate() {
         </button>
 
 
-        <div id="dialog" class="openPokemon-dialog">
-
+        <div onclick="closePreview()" id="dialog" class="openPokemon-dialog">
+           
         </div>`
 }

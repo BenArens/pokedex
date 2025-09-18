@@ -272,3 +272,7 @@ function renderFilterPokemon(filterObj){
     renderPokemonsTypes();
     editTypeColor();
 }
+
+function closeProtection(event){
+    event.stopPropagation();
+}
