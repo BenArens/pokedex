@@ -37,7 +37,8 @@ function renderFunction(){
 }
 
 async function morePokemon() {
-    getWorkplace();
+    // getWorkplace();
+    getSpinner(); 
     let currentPokemens = pokemons.length
     for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
         let response = await fetch(BASE_URL + pokemonFolder + index);
@@ -49,6 +50,7 @@ async function morePokemon() {
     }
     oriPokemons = pokemons;
     setTimeout(renderFunction,500);
+    getButton(); 
 }
 
 
@@ -290,4 +292,12 @@ function arrowDisplayNone(){
 
 function toggleSearchBox(){
     document.getElementById("searchBox").classList.toggle('displayNone'); 
+}
+
+function getSpinner(){
+    document.getElementById('button-box').innerHTML = getButtonSpinner(); 
+}
+
+function getButton() {
+    document.getElementById('button-box').innerHTML = getButtonTemplate(); 
 }

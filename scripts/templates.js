@@ -113,12 +113,21 @@ function getWorkplaceTemplate() {
     return ` <div id="pokemon" class="pokemons">
             <div class="mySpinner"><img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"></div><div id="pokemon" class="pokemons"></div>
         </div>
-        <button id="my_button" class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more
-            Pokémons
-        </button>
-
+        <div id="button-box"> 
+            <button id="my_button" class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more Pokémons</button>
+        </div>
 
         <div onclick="closePreview()" id="dialog" class="openPokemon-dialog">
            
+        </div>`
+}
+
+function getButtonSpinner() {
+    return `<div class="buttonSpinner"><img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"></div><div id="pokemon" class="pokemons"></div>`
+}
+
+function getButtonTemplate() {
+    return `<div id="button-box"> 
+            <button id="my_button" class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more Pokémons</button>
         </div>`
 }

@@ -355,6 +355,11 @@ img.close-icon {
     cursor: pointer;
 }
 
+.buttonSpinner {
+    display: flex;
+    justify-content: center;
+}
+
 @media(max-width:600px) {
     .logo{
         width: 175px;
