@@ -34,6 +34,7 @@ function renderFunction(){
     renderTemplate();
     renderPokemonsTypes();
     editTypeColor();
+    getButton(); 
 }
 
 async function morePokemon() {
@@ -50,7 +51,6 @@ async function morePokemon() {
     }
     oriPokemons = pokemons;
     setTimeout(renderFunction,500);
-    getButton(); 
 }
 
 
