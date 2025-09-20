@@ -16,11 +16,12 @@
 <body onload="fetchData()">
     <nav>
         <div class="innerNav">
-            <img class="logo" onclick="closePreview()" src="./img/logo.svg" alt="">
-            <input placeholder="Charizard" onkeyup="filterInput()" id="searchBox" type="text" class="searchBox">
+            <a href="https://ben-arens.developerakademie.net/pokedex/"> <img class="logo" src="./img/logo.svg" alt=""></a>
+           
+            <input placeholder="Charizard" oninput="filterInput()" id="searchBox" type="text" class="searchBox">
         </div>
     </nav>
-    <div id="mainContent" class="main-content">
+    <div onload="getWorkplace()" id="mainContent" class="main-content">
 
     </div>
     </div>

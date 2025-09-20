@@ -113,7 +113,7 @@ function getWorkplaceTemplate() {
     return ` <div id="pokemon" class="pokemons">
             <div class="mySpinner"><img src="./img/pokespinner.gif" alt="pokespinner" class="pokespinner"></div><div id="pokemon" class="pokemons"></div>
         </div>
-        <button class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more
+        <button id="my_button" class="myButton" onclick="morePokemon()"><img class="pokeball" src="./img/pokeball.png" alt=""> more
             Pokémons
         </button>
 

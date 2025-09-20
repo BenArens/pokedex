@@ -1,4 +1,3 @@
-// let pokemon = [];
 let pokemons = [];
 let oriPokemons= pokemons;
 let species = [];
@@ -31,20 +30,14 @@ async function fetchSpecies() {
     }
 }
 
-// async function fetchSpecies(index) {
-//     let responseSpecies = await fetch(BASE_URL + speciesFolder + index);
-//     responseSpecies = await responseSpecies.json();
-//     species.push(responseSpecies);
-// }
-
 function renderFunction(){
     renderTemplate();
     renderPokemonsTypes();
     editTypeColor();
 }
 
-
 async function morePokemon() {
+    getWorkplace();
     let currentPokemens = pokemons.length
     for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
         let response = await fetch(BASE_URL + pokemonFolder + index);
@@ -54,7 +47,6 @@ async function morePokemon() {
         pokemons.push(pokemon);
         species.push(responseSpecies);
     }
-    getWorkplace();
     oriPokemons = pokemons;
     setTimeout(renderFunction,500);
 }
@@ -140,6 +132,8 @@ function openPokemon(index) {
     editLineStats(index);
     fetchEvolution(index)
     displayNone(index);
+    arrowDisplayNone();
+    toggleSearchBox()
 }
 
 function noScroll() {
@@ -159,8 +153,8 @@ function displayNone() {
 function closePreview() {
     noScroll();
     displayNone();
+    toggleSearchBox();
 }
-
 
 function editLineStats(index) {
     let hpLine = document.getElementById('hp-line');
@@ -207,7 +201,6 @@ function backward(index) {
     fetchEvolution(index);
 }
 
-
 function renderEvolutions() {
     let evolutionChainRef = document.getElementById("evolutionsChain");
     evolutionChainRef.innerHTML = "";
@@ -249,10 +242,11 @@ function getWorkplace(){
 }
 
 function filterInput(){
+     hideButton()
     let searchBoxInput = document.getElementById('searchBox');
     searchBoxInput = searchBoxInput.value
-    console.log(searchBoxInput);
-    
+   
+
     let filterObj = oriPokemons;
 
     filterObj = filterObj.filter((element) => element['name'].includes(searchBoxInput));
@@ -263,7 +257,7 @@ function renderFilterPokemon(filterObj){
     let contentRef = document.getElementById('pokemon');
     contentRef.innerHTML = "";
     pokemons = filterObj; 
-    console.log(pokemons);
+    
     for (let index = 0; index < pokemons.length; index++) {
         contentRef.innerHTML += getPokemonTemplate(index);
     }
@@ -275,4 +269,25 @@ function renderFilterPokemon(filterObj){
 
 function closeProtection(event){
     event.stopPropagation();
+}
+
+function hideButton(){
+    if (searchBox.value.length != 0) {
+       let myButton = document.getElementById('my_button');
+       myButton.classList.add('displayNone');
+    } else {
+    let myButton = document.getElementById('my_button');
+       myButton.classList.remove('displayNone'); 
+    }
+}
+
+function arrowDisplayNone(){
+    if (pokemons.length === 1) {
+         document.getElementsByClassName("arrow-right")[0].style.display = "none";
+         document.getElementsByClassName("arrow-left")[0].style.display ="none";
+    }
+}
+
+function toggleSearchBox(){
+    document.getElementById("searchBox").classList.toggle('displayNone'); 
 }
