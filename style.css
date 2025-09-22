@@ -328,6 +328,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .mySpinner {
     background-color: #ffffff;
     position: absolute;
@@ -340,6 +341,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .searchBox {
     height: 30px;
     padding: 5px;
@@ -360,10 +362,16 @@ img.close-icon {
     justify-content: center;
 }
 
+.noPointerEvents{
+    pointer-events: none;
+    opacity: 0.25;
+}
+
 @media(max-width:600px) {
-    .logo{
+    .logo {
         width: 175px;
     }
+
     .open-pokemon {
         width: 95%;
         background-color: rgb(255 255 255 / 96%);
@@ -397,13 +405,27 @@ img.close-icon {
 
     .evolution-container {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         gap: 50px;
-        overflow-x: auto;
+        padding-bottom: 70px;
     }
 
     .searchBox {
-    width: 150px;
-}
+        width: 150px;
+    }
 
+    .innerNav {
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px 0;
+    }
+
+    .searchBox {
+        width: unset;
+    }
+
+    .openPokemon-dialog{
+        top: 60px;
+    }
 }

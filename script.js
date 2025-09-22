@@ -82,39 +82,7 @@ function editTypeColor() {
 
     for (let i = 0; i < pokemonTypeRef.length; i++) {
         let thisType = pokemonTypeRef[i];
-
-        switch (thisType.innerText) {
-            case "Poison":
-                thisType.classList.add("poison");
-                break;
-            case "Grass":
-                thisType.classList.add("grass");
-                break;
-            case "Fire":
-                thisType.classList.add("fire");
-                break;
-            case "Flying":
-                thisType.classList.add("flying");
-                break;
-            case "Water":
-                thisType.classList.add("water");
-                break;
-            case "Bug":
-                thisType.classList.add("bug");
-                break;
-            case "Normal":
-                thisType.classList.add("normal");
-                break;
-            case "Electric":
-                thisType.classList.add("electric");
-                break;
-            case "Ground":
-                thisType.classList.add("ground");
-                break;
-            default:
-                console.log("hallo Welt");
-                break;
-        }
+        thisType.classList.add(thisType.innerText.toLowerCase());
     }
 }
 
@@ -291,7 +259,7 @@ function arrowDisplayNone(){
 }
 
 function toggleSearchBox(){
-    document.getElementById("searchBox").classList.toggle('displayNone'); 
+    document.getElementById("searchBox").classList.toggle('noPointerEvents'); 
 }
 
 function getSpinner(){
