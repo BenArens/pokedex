@@ -38,7 +38,6 @@ function renderFunction(){
 }
 
 async function morePokemon() {
-    // getWorkplace();
     getSpinner(); 
     let currentPokemens = pokemons.length
     for (let index = pokemons.length + 1; index <= currentPokemens + 10; index++) {
@@ -214,7 +213,7 @@ function getWorkplace(){
 function filterInput(){
      hideButton()
     let searchBoxInput = document.getElementById('searchBox');
-    searchBoxInput = searchBoxInput.value
+    searchBoxInput = searchBoxInput.value.toLowerCase();
    
 
     let filterObj = oriPokemons;

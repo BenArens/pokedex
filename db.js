@@ -1,10 +1,10 @@
 let entwicklungen = [
     {
-        "name": "Jürgen",
+        "name": "",
         "imgPath": ""
     }, 
     {
-        "name": "Josef", 
+        "name": "", 
         "imgPath": ""
     },
     {

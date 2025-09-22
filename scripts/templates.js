@@ -17,9 +17,9 @@ function getPokemonTypes(index, i) {
 
 
 function openPokemonDialog(index) {
-    return `<img class="close-icon" src="./img/closeIcon.svg" alt="closeIcon">  
+    return ` 
           <div onclick="closeProtection(event)" class="open-pokemon">
-     
+     <img onclick="closePreview()" class="close-icon" src="./img/closeIcon.svg" alt="closeIcon"> 
 
 
                 <span onclick="backward(${index})" class="arrow-left material-symbols-outlined">arrow_circle_left</span>
