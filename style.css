@@ -206,7 +206,7 @@ body {
 .open-pokemon {
     background-color: rgb(255 255 255 / 78%);
     width: 80%;
-    height: 90%;
+    height: 80%;
     border: 3px solid #ef5350;
     border-radius: 12px 12px 0 0;
     padding: 40px;
@@ -216,6 +216,7 @@ body {
     display: flex;
     max-height: 710px;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 
@@ -350,10 +351,10 @@ body {
     font-size: 16px;
 }
 
-img.close-icon {
+.close-icon {
     position: absolute;
-    top: 7%;
-    right: 10px;
+    top: 12%;
+    right: 0px;
     cursor: pointer;
 }
 
@@ -362,7 +363,7 @@ img.close-icon {
     justify-content: center;
 }
 
-.noPointerEvents{
+.noPointerEvents {
     pointer-events: none;
     opacity: 0.25;
 }
@@ -378,6 +379,7 @@ img.close-icon {
         overflow-y: auto;
         max-height: none;
         height: 89%;
+
     }
 
     .card {
@@ -425,7 +427,12 @@ img.close-icon {
         width: unset;
     }
 
-    .openPokemon-dialog{
+    .openPokemon-dialog {
         top: 60px;
     }
+
+    .close-icon {
+        top: 8%;
+    }
+
 }
