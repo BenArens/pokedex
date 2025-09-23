@@ -1,4 +1,4 @@
-let entwicklungen = [
+let fullEvo = [
     {
         "name": "",
         "imgPath": ""

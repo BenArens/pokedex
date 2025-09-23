@@ -94,16 +94,16 @@ function getEvolutionChainTemplate() {
     return `  <h2>Evolution Chain</h2>
     <div class="evolution-container">
                     <div class="evolution-pokemon">
-                        <img class="evolution-img" src="${entwicklungen[0].img_url}" alt="">
-                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[0].name)}</h3>
+                        <img class="evolution-img" src="${fullEvo[0].img_url}" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(fullEvo[0].name)}</h3>
                     </div>
                     <div class="evolution-pokemon">
-                        <img class="evolution-img" src="${entwicklungen[1].img_url}" alt="">
-                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[1].name)}</h3>
+                        <img class="evolution-img" src="${fullEvo[1].img_url}" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(fullEvo[1].name)}</h3>
                     </div>
                     <div class="evolution-pokemon">
-                        <img class="evolution-img" src="${entwicklungen[2].img_url}" alt="">
-                        <h3 class="evolution-name">${capitalizeFirstLetter(entwicklungen[2].name)}</h3>
+                        <img class="evolution-img" src="${fullEvo[2].img_url}" alt="">
+                        <h3 class="evolution-name">${capitalizeFirstLetter(fullEvo[2].name)}</h3>
                     </div>
     </div>
 `
